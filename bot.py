@@ -10,8 +10,11 @@ terms = []
 
 def updateTerms(terms):
     with open("terms.txt", "r") as file:    
-        rawTerms = file.readlines()
-        terms = [x.strip() for x in rawTerms]
+        terms = []
+        # rawTerms = file.readlines()
+        # terms = [x.strip() for x in rawTerms]
+        for line in file:
+            terms.append(line)
  
 def addTerm(term):
     terms.append(term)
@@ -72,11 +75,13 @@ async def on_message(message):
                 msg = 'Removed ' + term + ' from the cringe list.'.format(message)
             await message.channel.send(msg)
         if message.content.startswith('c!cringelist'):
-            msg = '``` \n'
-            for x in terms:
-                msg += x + '\n'
-            msg += '```'
-            msg.format(message)
+            updateTerms(terms)
+            
+            #msg = '```'
+            #for x in terms:
+            #    msg += ' ' + str(terms.index(x)) + '. ' + x + '\n'
+            #msg += '```'
+            #msg.format(message)
             await message.channel.send(msg)
 
 
