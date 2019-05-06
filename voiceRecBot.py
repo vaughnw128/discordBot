@@ -186,6 +186,6 @@ async def on_ready():
     main()
 
 #Starts bot
-tfile = open("token.txt", "r")
+tfile = open("token", "r")
 TOKEN = tfile.read()
 client.run(TOKEN)
