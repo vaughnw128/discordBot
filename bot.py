@@ -1,6 +1,8 @@
 # Work with Python 3.6
 import discord
+import config
 
+TOKEN = config.token
 #TODO: allow for spaces in the terms, respond to cringe, display a PMed cringe list, voice chat features
 
 client = discord.Client()
@@ -94,6 +96,4 @@ async def on_ready():
     print('------')
 
 #Starts bot
-tfile = open("token.txt", "r")
-TOKEN = tfile.read()
 client.run(TOKEN)
